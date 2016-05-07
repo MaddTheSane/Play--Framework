@@ -86,3 +86,9 @@ add_library(Framework_MySql
 	../src/mysql/Result.cpp
 	../src/mysql/AccessInfo.cpp
 )
+
+add_library(Framework_Vulkan
+	../src/vulkan/Device.cpp
+	../src/vulkan/Instance.cpp
+	../src/vulkan/Loader.cpp
+)
