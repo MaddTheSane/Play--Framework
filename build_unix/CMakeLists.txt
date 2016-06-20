@@ -88,6 +88,7 @@ add_library(Framework_MySql
 )
 
 add_library(Framework_Vulkan
+	../src/vulkan/CommandBufferPool.cpp
 	../src/vulkan/Device.cpp
 	../src/vulkan/Instance.cpp
 	../src/vulkan/Loader.cpp
