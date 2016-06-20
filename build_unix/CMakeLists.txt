@@ -92,4 +92,5 @@ add_library(Framework_Vulkan
 	../src/vulkan/Device.cpp
 	../src/vulkan/Instance.cpp
 	../src/vulkan/Loader.cpp
+	../src/vulkan/ShaderModule.cpp
 )
