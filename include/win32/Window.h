@@ -29,7 +29,7 @@ namespace Framework
 			void					ClearClassPtr();
 			static CWindow*			GetClassPtr(HWND);
 			void					SubClass();
-			long					CallBaseWndProc(unsigned int, WPARAM, LPARAM);
+			LRESULT					CallBaseWndProc(unsigned int, WPARAM, LPARAM);
 			static bool				DoesWindowClassExist(const TCHAR*);
 			static bool				IsNotifySource(const CWindow*, const NMHDR*);
 			static bool				IsCommandSource(const CWindow*, HWND);
@@ -71,8 +71,8 @@ namespace Framework
 			virtual long			OnClose();
 			virtual long			OnCommand(unsigned short, unsigned short, HWND);
 			virtual long			OnSysCommand(unsigned int, LPARAM);
-			virtual long			OnNotify(WPARAM, NMHDR*);
-			virtual long			OnWndProc(UINT, WPARAM, LPARAM);
+			virtual LRESULT			OnNotify(WPARAM, NMHDR*);
+			virtual LRESULT			OnWndProc(UINT, WPARAM, LPARAM);
 			virtual long			OnSize(unsigned int, unsigned int, unsigned int);
 			virtual long			OnMove(int, int);
 			virtual long			OnLeftButtonUp(int, int);
@@ -90,14 +90,14 @@ namespace Framework
 			virtual long			OnDestroy();
 			virtual long			OnCtlColorStatic(HDC, HWND);
 			virtual long			OnActivate(unsigned int, bool, HWND);
-			virtual long			OnMouseActivate(WPARAM, LPARAM);
+			virtual LRESULT			OnMouseActivate(WPARAM, LPARAM);
 			virtual long			OnActivateApp(bool, unsigned long);
 			virtual long			OnSetCursor(HWND, unsigned int, unsigned int);
 			virtual long			OnDrawItem(unsigned int, LPDRAWITEMSTRUCT);
 			virtual long			OnCopy();
 			virtual long			OnNcCalcSize(WPARAM, LPARAM);
 			virtual long			OnNcPaint(WPARAM);
-			virtual long			OnGetDlgCode(WPARAM, LPARAM);
+			virtual LRESULT			OnGetDlgCode(WPARAM, LPARAM);
 			virtual long			OnThemeChanged();
 
 			//Add parameters for these

@@ -112,9 +112,9 @@ void CWindow::SubClass()
 	m_baseWndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(m_hWnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(SubClassWndProc)));
 }
 
-long CWindow::CallBaseWndProc(unsigned int uiMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CWindow::CallBaseWndProc(unsigned int uiMsg, WPARAM wParam, LPARAM lParam)
 {
-	return (long)CallWindowProc(m_baseWndProc, m_hWnd, uiMsg, wParam, lParam);
+	return CallWindowProc(m_baseWndProc, m_hWnd, uiMsg, wParam, lParam);
 }
 
 bool CWindow::DoesWindowClassExist(const TCHAR* className)
@@ -448,7 +448,7 @@ LRESULT WINAPI CWindow::WndProc(HWND hWnd, unsigned int uiMsg, WPARAM wParam, LP
 			long nBrush = pThis->OnCtlColorStatic((HDC)wParam, (HWND)lParam);
 			if(!nBrush)
 			{
-				return (long)DefWindowProc(hWnd, uiMsg, wParam, lParam);
+				return DefWindowProc(hWnd, uiMsg, wParam, lParam);
 			}
 			else
 			{
@@ -507,7 +507,7 @@ LRESULT WINAPI CWindow::SubClassWndProc(HWND hWnd, unsigned int uiMsg, WPARAM wP
 	return DefWindowProc(hWnd, uiMsg, wParam, lParam);
 }
 
-long CWindow::OnWndProc(UINT uiMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CWindow::OnWndProc(UINT uiMsg, WPARAM wParam, LPARAM lParam)
 {
 	return TRUE;
 }
@@ -527,7 +527,7 @@ long CWindow::OnSysCommand(unsigned int nCmd, LPARAM lParam)
 	return TRUE;
 }
 
-long CWindow::OnNotify(WPARAM wParam, NMHDR* pHDR)
+LRESULT CWindow::OnNotify(WPARAM wParam, NMHDR* pHDR)
 {
 	return FALSE;
 }
@@ -647,9 +647,9 @@ long CWindow::OnActivate(unsigned int nType, bool bMinimized, HWND hWnd)
 	return TRUE;
 }
 
-long CWindow::OnMouseActivate(WPARAM wParam, LPARAM lParam)
+LRESULT CWindow::OnMouseActivate(WPARAM wParam, LPARAM lParam)
 {
-	return static_cast<long>(DefWindowProc(m_hWnd, WM_MOUSEACTIVATE, wParam, lParam));
+	return DefWindowProc(m_hWnd, WM_MOUSEACTIVATE, wParam, lParam);
 }
 
 long CWindow::OnActivateApp(bool nActive, DWORD nThreadId)
@@ -682,9 +682,9 @@ long CWindow::OnNcPaint(WPARAM)
 	return TRUE;
 }
 
-long CWindow::OnGetDlgCode(WPARAM wParam, LPARAM lParam)
+LRESULT CWindow::OnGetDlgCode(WPARAM wParam, LPARAM lParam)
 {
-	return static_cast<long>(DefWindowProc(m_hWnd, WM_GETDLGCODE, wParam, lParam));
+	return DefWindowProc(m_hWnd, WM_GETDLGCODE, wParam, lParam);
 }
 
 long CWindow::OnThemeChanged()
